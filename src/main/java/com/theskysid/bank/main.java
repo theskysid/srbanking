@@ -1,4 +1,4 @@
-package Z_GFG.Bank;
+package com.theskysid.bank;
 import java.util.*;
 
 public class main {
