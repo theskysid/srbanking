@@ -1,13 +1,13 @@
-package com.theskysid.bank;
+package com.theskysid.backendbank;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BankingWebAppApplicationTests {
+class BackendBankApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+    @Test
+    void contextLoads() {
+    }
 
 }
