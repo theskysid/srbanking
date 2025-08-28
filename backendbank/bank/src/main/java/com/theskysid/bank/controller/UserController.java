@@ -12,5 +12,4 @@ public class UserController {
    public String greet(){
       return "Hello World!";
    }
-
 }
