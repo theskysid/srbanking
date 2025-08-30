@@ -3,8 +3,9 @@ package com.theskysid.bank.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Data;
-
 import javax.management.relation.Role;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -33,5 +34,12 @@ public class User {
 
    @ElementCollection(fetch = FetchType.EAGER)
    private Set<Role> roles;
+
+//   @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+   @OneToOne(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+   private Profile profile;
+
+   @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+   private List<Transaction> transactions = new ArrayList<>();
 
 }
