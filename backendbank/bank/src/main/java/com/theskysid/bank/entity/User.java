@@ -33,7 +33,12 @@ public class User {
    private String email;
 
    @ElementCollection(fetch = FetchType.EAGER)
+   @NotBlank
    private Set<Role> roles;
+
+   @ElementCollection(fetch = FetchType.EAGER)
+   @NotBlank
+   private Set<UserStatus> userStatus;
 
 //   @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
    @OneToOne(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
