@@ -1,10 +1,11 @@
 package com.theskysid.bank.entity;
 
+import com.theskysid.bank.entity.enums.Role;
+import com.theskysid.bank.entity.enums.UserStatus;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Data;
-import javax.management.relation.Role;
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Set;
 
@@ -14,7 +15,7 @@ import java.util.Set;
 public class User {
 
    @Id
-   @GeneratedValue(strategy = GenerationType.AUTO)
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long id;
 
    @NotBlank(message = "Username is required")
@@ -33,18 +34,17 @@ public class User {
    private String email;
 
    @ElementCollection(fetch = FetchType.EAGER)
-   @NotBlank
+   @Enumerated(EnumType.STRING)
    private Set<Role> roles;
 
-   @ElementCollection(fetch = FetchType.EAGER)
-   @NotBlank
-   private Set<UserStatus> userStatus;
+   @Enumerated(EnumType.STRING)
+   private UserStatus status; //it will take enum class only one at a time like active or inactive
 
 //   @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
    @OneToOne(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
    private Profile profile;
 
    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-   private List<Transaction> transactions = new ArrayList<>();
+   private List<Transaction> transactions;
 
 }

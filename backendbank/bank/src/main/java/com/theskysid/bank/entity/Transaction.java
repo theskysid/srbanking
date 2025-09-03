@@ -3,6 +3,7 @@ package com.theskysid.bank.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -11,10 +12,11 @@ import java.util.Date;
 public class Transaction {
 
    @Id
-   @GeneratedValue(strategy = GenerationType.AUTO)
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long id;
 
-   private Date transactionDate;
+   private LocalDate transactionDate;
+   private Long transactionID;
    private float creditedAmount;
    private float debitedAmount;
    private float balance;
@@ -22,4 +24,8 @@ public class Transaction {
    @ManyToOne
    @JoinColumn(name = "user_id", nullable = false)  // foreign key
    private User user;
+
+   @ManyToOne
+   @JoinColumn(name = "account_id")
+   private Account account;
 }

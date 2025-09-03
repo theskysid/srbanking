@@ -1,4 +1,4 @@
-package com.theskysid.bank.entity;
+package com.theskysid.bank.entity.enums;
 
 public enum UserStatus {
    isActive,
